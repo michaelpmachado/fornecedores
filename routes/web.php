@@ -22,12 +22,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('home');
 
 
-Route::group(['prefix' => '/fornecedores', 'middleware' => "auth"], function () {
-      Route::get('/fornecedores}', 'FornecedorestController@index');
- //   Route::put('/store/{id}', 'GuiaMedicaController@store');
- //   Route::get('/download/{ficheiro}', "GuiaMedicaController@download");
-//});
-
+Route::middleware(['auth:sanctum', 'verified'])->get('/fornecedores', function () {
+    return view('fornecedores');
+})->name('fornecedores');
 
 //Route::group(['prefix' => '/fornecedores', 'middleware' => "auth"], function () {
  //   Route::get('/fornecedores/index}', 'FornecedoresController@index');
