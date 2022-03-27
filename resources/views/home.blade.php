@@ -45,7 +45,7 @@
 
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>32001</h3>
+                    <h3>3201</h3>
                     <p>Fornecedores entrega mesmo dia</p>
                 </div>
                 <div class="icon">
