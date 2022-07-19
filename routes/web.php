@@ -17,17 +17,35 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('Início');
+
+Route::get('/home', function() {
     return view('home');
-})->name('home');
+})->name('home')->middleware('auth');
 
+Route::prefix('admin')->group(function () {
+  //  Route::get('/pages', function () {
+  //      return view('pages');
+  //  });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/fornecedores', function () {
-    return view('fornecedores');
-})->name('fornecedores');
+    Route::get('/cliques', function () {
+        return view('cliques', [
+            'cliques' => 'CiqueController@index'
 
-//Route::group(['prefix' => '/fornecedores', 'middleware' => "auth"], function () {
- //   Route::get('/fornecedores/index}', 'FornecedoresController@index');
- //   Route::put('/store/{id}', 'GuiaMedicaController@store');
- //   Route::get('/download/{ficheiro}', "GuiaMedicaController@download");
-//});
+         //   Route::get('/list', "UsuarioController@index");
+
+        ]);
+    });
+
+ //   Route::get('/cliques', function () {
+ //       return view('cliques', [
+ //           'cliques' => \App\Models\Clique::all()
+ //       ]);
+ //   });
+
+    Route::get('/settings', function () {
+        // Matches The "/admin/pages" URL
+    });
+});

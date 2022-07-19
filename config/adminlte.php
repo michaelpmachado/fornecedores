@@ -1,3 +1,8 @@
+<script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+    </script>
 <?php
 
 return [
@@ -14,7 +19,7 @@ return [
     |
     */
 
-    'title' => 'Cadastro de Fornecedores',
+    'title' => 'FlexCall - Call Center',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -31,7 +36,7 @@ return [
     */
 
     'use_ico_only' => false,
-    'use_full_favicon' => false,
+    'use_full_favicon' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -45,12 +50,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    //'logo' => '<b>Flex</b>Call',
+    'logo_img' => 'vendor/adminlte/dist/img/logomarcas.png',
+    'logo_img_class' => 'brand-image elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'FlexCall',
 
     /*
     |--------------------------------------------------------------------------
@@ -188,13 +193,13 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'dashboard',
+    'dashboard_url' => 'home',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
     'password_reset_url' => 'password/reset',
     'password_email_url' => 'password/email',
-    'profile_url' => 'profile',
+    'profile_url' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -228,8 +233,8 @@ return [
         // Navbar items:
         [
             'type'         => 'navbar-search',
-            'text'         => 'Procurar',
-            'topnav_right' => false,
+            'text'         => 'search',
+            'topnav_right' => true,
         ],
         [
             'type'         => 'fullscreen-widget',
@@ -239,7 +244,7 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'Procurar',
+            'text' => 'search',
         ],
         [
             'text' => 'blog',
@@ -247,10 +252,10 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Fornecedores',
-            'url'         => 'fornecedores',
+            'text'        => 'Click',
+            'url'         => 'admin/cliques',
             'icon'        => 'far fa-fw fa-file',
-            'label'       => 1,
+            'label'       => 4,
             'label_color' => 'success',
         ],
         ['header' => 'account_settings'],
@@ -258,7 +263,6 @@ return [
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
-            'label'=> 1,
         ],
         [
             'text' => 'change_password',
@@ -266,7 +270,7 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
+            'text'    => 'Cadastro',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
@@ -356,37 +360,38 @@ return [
     */
 
     'plugins' => [
+
         'Datatables' => [
             'active' => true,
             'files' => [
                 [
                     'type' => 'js',
                     'asset' => true,
-                    'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
+                    'location' => 'https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'css',
                     'asset' => true,
+                    'location' => 'https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
                     'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
                 ],
             ],
         ],
         'Select2' => [
-            'active' => true,
+            'active' => false,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => true,
+                    'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => true,
+                    'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
                 ],
             ],
@@ -402,11 +407,11 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => true,
+            'active' => false,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => true,
+                    'asset' => false,
                     'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
                 ],
             ],
